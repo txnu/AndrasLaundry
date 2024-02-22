@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
   String username;
-  Dashboard({Key? key, this.username = ''}) : super(key: key);
+  Dashboard({Key? key, this.username = ""}) : super(key: key);
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -20,13 +20,15 @@ class _DashboardState extends State<Dashboard> {
     "images/antarJemput.png",
     "images/pelayanan.png",
     "images/terimaBarang.png",
+    "images/promo.png"
   ];
 
   List titles = [
     "Item Laundry",
     "Antar Jemput",
     "Pelayanan",
-    "Terima Barang",
+    "Riwayat Laundry",
+    "Informasi Promo"
   ];
 
   List layanana = [];
@@ -37,16 +39,14 @@ class _DashboardState extends State<Dashboard> {
     itemLaundry(),
     AntarJemputWidget(),
     Pelayanan(),
-    TerimaBarang()
+    TerimaBarang(),
   ];
 
   @override
   void initState() {
     super.initState();
     if (widget.username.isNotEmpty) {
-      setState(() {
-        var username = widget.username;
-      });
+      setState(() {});
     }
   }
 

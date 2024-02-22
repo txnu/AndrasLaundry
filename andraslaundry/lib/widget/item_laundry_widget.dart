@@ -21,6 +21,8 @@ class _itemLaundryState extends State<itemLaundry> {
   List _paketLaundryItems = [];
   List _LayananItems = [];
 
+  TextEditingController? _txtTujuanController;
+
   getPaketLaundry() async {
     bool status;
     try {
@@ -56,6 +58,14 @@ class _itemLaundryState extends State<itemLaundry> {
     super.initState();
     getPaketLaundry();
     getLayanan();
+    paketLaundry = "-1";
+    layanan = "-1";
+  }
+
+  @override
+  void dispose() {
+    _txtTujuanController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -163,9 +173,28 @@ class _itemLaundryState extends State<itemLaundry> {
                   onChanged: (String? value) {
                     setState(() {
                       layanan = value!;
+
+                      if (value == "65d7943dbf94178acaa78f77") {
+                        // replace "specific_package_id" with the actual package id you want to trigger the text field
+                        _txtTujuanController = TextEditingController();
+                      } else {
+                        _txtTujuanController?.dispose();
+                        _txtTujuanController = null;
+                      }
                     });
                   },
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                if (_txtTujuanController != null)
+                  TextFormField(
+                    controller: _txtTujuanController,
+                    decoration: InputDecoration(
+                      labelText: "Tambah Titik Jemput Disini ya😊",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
                 SizedBox(
                   height: 50,
                 ),

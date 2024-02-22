@@ -21,72 +21,66 @@ class Pelayanan extends StatelessWidget {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          color: Colors.indigo,
-          width: width,
-          child: Column(
-            children: [
-              SingleChildScrollView(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(30),
-                      topLeft: Radius.circular(30),
-                    ),
-                  ),
-
-                  // height: height * 0.75,
-                  width: width,
-                  padding: EdgeInsets.only(
-                    bottom: 20,
-                  ),
-
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: imgData.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {},
-                        child: Container(
-                          margin:
-                              EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black26,
-                                spreadRadius: 1,
-                                blurRadius: 6,
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Image.asset(
-                                imgData[index],
-                                width: 50,
-                              ),
-                              Text(
-                                titles[index],
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30),
                   ),
                 ),
+
+                // height: height * 0.75,
+                width: width,
+                padding: EdgeInsets.only(bottom: 20, top: 300),
+
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: imgData.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {},
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              spreadRadius: 1,
+                              blurRadius: 6,
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Image.asset(
+                              imgData[index],
+                              width: 50,
+                            ),
+                            Text(
+                              titles[index],
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

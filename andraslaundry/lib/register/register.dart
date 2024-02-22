@@ -13,7 +13,7 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  final _formKey = GlobalKey<FormState>();
+
   String? namalengkap;
   String? telepon;
   String? username;
