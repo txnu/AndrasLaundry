@@ -70,7 +70,7 @@ class _DashboardState extends State<Dashboard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 55, left: 20, right: 20),
+                        padding: EdgeInsets.only(top: 65, left: 20, right: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -105,7 +105,7 @@ class _DashboardState extends State<Dashboard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Dashboard",
+                              "Beranda",
                               style: TextStyle(
                                   fontSize: 30,
                                   color: Colors.white,
@@ -113,12 +113,12 @@ class _DashboardState extends State<Dashboard> {
                                   letterSpacing: 1),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 8,
                             ),
                             Text(
                               "Selamat Datang ${(widget.username)}",
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 16,
                                   color: Colors.white54,
                                   letterSpacing: 1),
                             ),
