@@ -1,7 +1,8 @@
+import 'package:andraslaundry/Screens/Admin/HomeAdminScreens.dart';
+import 'package:andraslaundry/Screens/User/HomeUserScreens.dart';
+import 'package:andraslaundry/Utils/constant.dart';
 import 'package:andraslaundry/api/configAPI.dart';
-import 'package:andraslaundry/dashboard.dart';
 import 'package:andraslaundry/register/register.dart';
-import 'package:andraslaundry/utils/constant.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -135,14 +136,20 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
+  // Function
+
   var dio = Dio();
   Response? response;
+  var getUser;
 
   void prosesLogin(username, password) async {
     utilApps.showDialog(context);
 
     bool status;
     var msg;
+    var dataUser;
+
+    String userId;
 
     try {
       response = await dio
@@ -151,6 +158,9 @@ class _LoginFormState extends State<LoginForm> {
       msg = response!.data['msg'];
 
       if (status) {
+        getUser = response!.data['data'];
+        userId = getUser['_id'];
+        password = txtPassword.text;
         AwesomeDialog(
             context: context,
             animType: AnimType.rightSlide,
@@ -161,14 +171,25 @@ class _LoginFormState extends State<LoginForm> {
             desc: 'Selamat ya kamu berhasil login😊',
             btnOkOnPress: () {
               utilApps.hideDialog(context);
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Dashboard(
-                    username: txtUsername.text,
+              dataUser = response!.data['data'];
+              if (dataUser['role'] == 1) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeUserScreens(
+                      userId: userId.toString(),
+                      password: password.toString(),
+                    ),
                   ),
-                ),
-              );
+                );
+              } else {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeAdminScreens(),
+                  ),
+                );
+              }
             }).show();
       } else {
         AwesomeDialog(

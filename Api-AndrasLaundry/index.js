@@ -27,6 +27,7 @@ app.use('/laundry', require('./routes/laundry'))
 app.use('/transaksi', require('./routes/transaksi'))
 app.use('/paketlaundry', require('./routes/paketLaundry'))
 app.use('/layanan', require('./routes/layanan'))
+app.use('/alamat', require('./routes/alamat'))
 
 app.listen(5001, () => {
     console.log('Berhasil Jalan')

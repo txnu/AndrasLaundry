@@ -1,15 +1,18 @@
 String baseUrl = 'http://192.168.1.13:5001';
+// String baseUrl = 'http://172.16.0.148:5001';
 
 //Login dan Register
 String urlLogin = '$baseUrl/user/login';
 String urlRegister = '$baseUrl/user/register';
-String urlUser = '$baseUrl/user';
+String urlUser = '$baseUrl/user/';
+String urlEditUser = '$baseUrl/user/edit/';
+String urlGetByIdUser = '$baseUrl/user/getbyid/';
 
 //Paket Laundry
 String urlGetAllPaket = '$baseUrl/paketlaundry/getall';
 String urlGetbyIdPaket = '$baseUrl/paketlaundry/getbyid';
 String urlCreatePaket = '$baseUrl/paketlaundry/create';
-String urlEditPaket = '$baseUrl/paketlaundry/edit';
+String urlEditPaket = '$baseUrl/paketlaundry/edit/:id';
 String urlHapusPaket = '$baseUrl/paketlaundry/hapus';
 
 //Layanan Laundry

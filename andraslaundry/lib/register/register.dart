@@ -1,6 +1,6 @@
 import 'package:andraslaundry/api/configAPI.dart';
-import 'package:andraslaundry/login/login.dart';
-import 'package:andraslaundry/utils/constant.dart';
+import 'package:andraslaundry/Login/login.dart';
+import 'package:andraslaundry/Utils/constant.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,6 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-
   String? namalengkap;
   String? telepon;
   String? username;
@@ -29,9 +28,6 @@ class _RegisterFormState extends State<RegisterForm> {
   void initState() {
     super.initState();
   }
-
-  var dio = Dio();
-  Response? response;
 
   @override
   Widget build(BuildContext context) {
@@ -134,6 +130,11 @@ class _RegisterFormState extends State<RegisterForm> {
       ),
     );
   }
+
+  //vFunction
+
+  var dio = Dio();
+  Response? response;
 
   void prosesRegistrasi(namalengkap, telepon, username, password) async {
     utilApps.showDialog(context);
