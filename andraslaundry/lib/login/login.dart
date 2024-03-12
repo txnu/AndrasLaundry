@@ -18,6 +18,8 @@ class _LoginFormState extends State<LoginForm> {
   TextEditingController txtUsername = TextEditingController(),
       txtPassword = TextEditingController();
 
+  var textColor;
+
   @override
   void initState() {
     super.initState();
@@ -38,7 +40,7 @@ class _LoginFormState extends State<LoginForm> {
             child: Column(
               children: [
                 Image.asset(
-                  "images/laundry.png",
+                  "assets/images/laundry.png",
                   height: 140,
                   width: 140,
                 ),

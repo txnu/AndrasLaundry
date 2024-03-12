@@ -15,8 +15,10 @@ class itemLaundry extends StatefulWidget {
 }
 
 class _itemLaundryState extends State<itemLaundry> {
-  // static const LatLng sourceLocation =
-  //     LatLng(-0.05676061064958758, 109.29412000498971);
+  String? namaPelanggan;
+  String? telepon;
+  String? idPaket = "";
+  String? idLayanan = "";
 
   var dio = Dio();
   Response? response;
@@ -25,6 +27,8 @@ class _itemLaundryState extends State<itemLaundry> {
   List _LayananItems = [];
 
   TextEditingController? _txtTujuanController;
+  TextEditingController txtNamaLengkap = TextEditingController();
+  TextEditingController txtTelepon = TextEditingController();
 
 // GET Paket Laundry
   getPaketLaundry() async {
@@ -58,6 +62,12 @@ class _itemLaundryState extends State<itemLaundry> {
     } catch (e) {}
   }
 
+// POST Booking
+  Transaksi() async {
+    try {} catch (e) {}
+  }
+
+//Handle Refresh
   Future<void> _handleRefresh() async {
     await Future.delayed(Duration(seconds: 2));
 
@@ -95,7 +105,7 @@ class _itemLaundryState extends State<itemLaundry> {
               child: Column(
                 children: [
                   Image.asset(
-                    "images/laundry.png",
+                    "assets/images/laundry.png",
                     height: 140,
                     width: 140,
                   ),
@@ -103,6 +113,7 @@ class _itemLaundryState extends State<itemLaundry> {
                     height: 50,
                   ),
                   TextFormField(
+                    controller: txtNamaLengkap,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       labelText: "Nama Pelanggan",

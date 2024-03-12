@@ -25,11 +25,11 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
   var height, width;
 
   List imgData = [
-    "images/laundry.png",
-    "images/antarJemput.png",
-    "images/pelayanan.png",
-    "images/terimaBarang.png",
-    "images/promo.png"
+    "assets/images/laundry.png",
+    "assets/images/antarJemput.png",
+    "assets/images/pelayanan.png",
+    "assets/images/terimaBarang.png",
+    "assets/images/promo.png"
   ];
 
   List titles = [
@@ -120,7 +120,8 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.white,
                                     image: DecorationImage(
-                                      image: AssetImage("images/profile.png"),
+                                      image: AssetImage(
+                                          "assets/images/profile.png"),
                                     ),
                                   ),
                                 ),

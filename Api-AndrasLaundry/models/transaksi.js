@@ -3,24 +3,20 @@ const Schema = mongoose.Schema
 const objectId = mongoose.Types.ObjectId
 
 const transaksiSchema = new Schema({
-    idBarang:{
-        type:objectId
-    },
     idUser:{
         type:objectId
     },
-    jumlah:{
+    namaPelanggan:{
+        type:String
+    },
+    noTelepon:{
         type:Number
     },
-    harga:{
-        type:Number
+    idPaket:{
+        type:objectId
     },
-    total:{
-        type:Number
-    },
-    tanggal:{
-        type:Date,
-        default:new Date().toLocaleDateString()
+    idLayanan:{
+        type:objectId
     },
     status:{
         type:Number,
@@ -28,6 +24,10 @@ const transaksiSchema = new Schema({
     },
     buktiPembayaran:{
         type:String
+    },
+    tanggal:{
+        type:Date,
+        default:new Date().toLocaleDateString()
     }
 })
 

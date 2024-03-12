@@ -5,8 +5,8 @@ class Pelayanan extends StatelessWidget {
   var height, width;
 
   List imgData = [
-    "images/whatsapp.png",
-    "images/email.png",
+    "assets/images/whatsapp.png",
+    "assets/images/email.png",
   ];
 
   List titles = [
