@@ -1,4 +1,5 @@
 import 'package:andraslaundry/Login/login.dart';
+import 'package:andraslaundry/Screens/Admin/Screens/TransactionScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginForm(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => LoginForm(),
+        "transaksi": (context) => TransaksiScreen()
+      },
     );
   }
 }

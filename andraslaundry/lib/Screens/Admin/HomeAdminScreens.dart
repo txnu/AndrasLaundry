@@ -3,8 +3,33 @@ import 'package:andraslaundry/Screens/Admin/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
 
-class HomeAdminScreens extends StatelessWidget {
-  const HomeAdminScreens({super.key});
+import 'Screens/AkunScreen.dart';
+import 'Screens/LayananScreen.dart';
+import 'Screens/PaketScreen.dart';
+import 'Screens/PengaturanScreen.dart';
+import 'Screens/RiwayatTransaksi.dart';
+import 'Screens/TransactionScreen.dart';
+import 'Screens/dashboard_screen.dart';
+
+class HomeAdminScreens extends StatefulWidget {
+  HomeAdminScreens({Key? key}) : super(key: key);
+
+  @override
+  State<HomeAdminScreens> createState() => _HomeAdminScreensState();
+}
+
+class _HomeAdminScreensState extends State<HomeAdminScreens> {
+  int _selectedIndex = 0;
+
+  List<Widget> _widgetOptions = <Widget>[
+    DashboardScreen(),
+    TransaksiScreen(),
+    RiwayatTransaksiScreen(),
+    LayananScreen(),
+    PaketScreen(),
+    AkunScreen(),
+    PengaturanScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +39,35 @@ class HomeAdminScreens extends StatelessWidget {
         brightness == Brightness.light ? Colors.black : Colors.white;
 
     return Scaffold(
+      drawer: !responsive.isDesktop(context)
+          ? SideMenu(
+              textColor: textColor,
+              onSelected: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+            )
+          : null,
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (Responsive.isDesktop(context))
+            if (responsive.isDesktop(context))
               Expanded(
                 child: SideMenu(
                   textColor: textColor,
+                  onSelected: (int index) {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
                 ),
               ),
-            if (!Responsive.isMobile(context))
-              Expanded(
-                  flex: 5,
-                  child: SideMenu(
-                    textColor: textColor,
-                  )),
+            Expanded(
+              flex: 5,
+              child: _widgetOptions[_selectedIndex],
+            ),
           ],
         ),
       ),
@@ -39,12 +77,12 @@ class HomeAdminScreens extends StatelessWidget {
 
 class DrawerListTile extends StatelessWidget {
   const DrawerListTile({
-    super.key,
+    Key? key,
     required this.title,
     required this.svgSrc,
     required this.press,
     required this.textColor,
-  });
+  }) : super(key: key);
 
   final String title, svgSrc;
   final Color textColor;

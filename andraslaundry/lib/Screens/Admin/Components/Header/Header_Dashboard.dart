@@ -1,5 +1,8 @@
 import 'package:andraslaundry/Screens/Admin/Screens/dashboard_screen.dart';
+import 'package:andraslaundry/Screens/Admin/responsive.dart';
 import 'package:flutter/material.dart';
+
+import '../MenuController.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -10,12 +13,15 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        if (!responsive.isDesktop(context)) Menu(),
         Text(
           "Dashboard",
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.headline4,
         ),
         Spacer(),
-        Expanded(child: SearchField()),
+        Expanded(
+          child: SearchField(),
+        ),
         SizedBox(
           width: 10,
         ),

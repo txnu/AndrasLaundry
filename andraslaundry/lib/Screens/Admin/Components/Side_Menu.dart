@@ -1,11 +1,13 @@
 import 'package:andraslaundry/Screens/Admin/HomeAdminScreens.dart';
-import 'package:andraslaundry/Screens/Admin/Screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatelessWidget {
-  const SideMenu({super.key, required this.textColor});
+  const SideMenu({Key? key, required this.textColor, required this.onSelected})
+      : super(key: key);
 
   final Color textColor;
+  final ValueChanged<int> onSelected;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -24,6 +26,7 @@ class SideMenu extends StatelessWidget {
               title: "Dashboard",
               svgSrc: "assets/icons/menu_dashboard.svg",
               press: () {
+                onSelected(0);
               },
               textColor: textColor,
             ),
@@ -31,25 +34,48 @@ class SideMenu extends StatelessWidget {
               title: "Transaksi",
               svgSrc: "assets/icons/menu_tran.svg",
               press: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => TransaksiScreen(),
-                  ),
-                );
+                onSelected(1);
               },
               textColor: textColor,
             ),
             DrawerListTile(
               title: "Riwayat Transaksi",
               svgSrc: "assets/icons/menu_task.svg",
-              press: () {},
+              press: () {
+                onSelected(2);
+              },
+              textColor: textColor,
+            ),
+            DrawerListTile(
+              title: "Layanan",
+              svgSrc: "assets/icons/menu_setting.svg",
+              press: () {
+                onSelected(3);
+              },
+              textColor: textColor,
+            ),
+            DrawerListTile(
+              title: "Paket",
+              svgSrc: "assets/icons/menu_setting.svg",
+              press: () {
+                onSelected(4);
+              },
+              textColor: textColor,
+            ),
+            DrawerListTile(
+              title: "Akun",
+              svgSrc: "assets/icons/menu_setting.svg",
+              press: () {
+                onSelected(5);
+              },
               textColor: textColor,
             ),
             DrawerListTile(
               title: "Setting",
               svgSrc: "assets/icons/menu_setting.svg",
-              press: () {},
+              press: () {
+                onSelected(6);
+              },
               textColor: textColor,
             ),
           ],
