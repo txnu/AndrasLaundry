@@ -19,15 +19,16 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
-const directory = path.join(__dirname, '/static/')
-app.use(express.static(directory))
+const directory = path.join(__dirname, 'static')
+app.use('/static', express.static(directory))
 
 app.use('/user', require('./routes/user'))
 app.use('/laundry', require('./routes/laundry'))
 app.use('/transaksi', require('./routes/transaksi'))
-app.use('/paketlaundry', require('./routes/paketLaundry'))
+app.use('/paket', require('./routes/paketLaundry'))
 app.use('/layanan', require('./routes/layanan'))
 app.use('/alamat', require('./routes/alamat'))
+app.use('/promo', require('./routes/promo'))
 
 app.listen(5001, () => {
     console.log('Berhasil Jalan')

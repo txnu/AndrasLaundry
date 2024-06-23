@@ -8,13 +8,7 @@ const fields = uploadConfig.upload.fields([
     }
 ])
 
-router.post('/create', fields, (req, res) => {
-    // req.body.buktiPembayaran = req.files.buktiPembayaran[0].filename
-
-    transaksiController.create(req.body)
-        .then(result => res.json(result))
-        .catch(err => res.json(err))
-})
+router.post('/create', transaksiController.create)
 
 router.put('/upload-bukti/:id', fields, (req, res) => {
     req.body.buktiPembayaran = req.files.buktiPembayaran[0].filename
@@ -24,25 +18,19 @@ router.put('/upload-bukti/:id', fields, (req, res) => {
         .catch(err => res.json(err))
 })
 
-router.get('/getall', (req, res) => {
+router.get('/getalltransaksi', transaksiController.getAllTransaksi);
 
-    transaksiController.getall()
-        .then(result => res.json(result))
-        .catch(err => res.json(err))
-})
+router.get('/getbyid/:id', transaksiController.getTransaksiById);
+// Rute untuk mengupdate transaksi
+router.put('/update/:id', transaksiController.updateTransaksi);
 
-router.get('/getbyiduser/:id', (req, res) => {
+router.delete('/delete/:id', transaksiController.deleteTransaksi);
 
-    transaksiController.getByIdUser(req.params.id)
-        .then(result => res.json(result))
-        .catch(err => res.json(err))
-})
+// router.get('/getbyiduserlimit/:id', (req, res) => {
 
-router.get('/getbyiduserlimit/:id', (req, res) => {
-
-    transaksiController.getByIdUserLimit(req.params.id)
-        .then(result => res.json(result))
-        .catch(err => res.json(err))
-})
+//     transaksiController.getByIdUserLimit(req.params.id)
+//         .then(result => res.json(result))
+//         .catch(err => res.json(err))
+// })
 
 module.exports = router

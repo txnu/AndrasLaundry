@@ -16,13 +16,21 @@ router.post('/login', (req,res) => {
         .catch(err => res.json(err))
 })
 
+// Route untuk mengedit pengguna berdasarkan ID
 router.put('/edit/:id', (req, res) => {
-    const data = req.body;
-    console.log(data)
+    const data = req.body; // Ambil data dari body permintaan
+    console.log(data); // Log data untuk keperluan debugging
+
     userController.edit(req.params.id, data)
-      .then(result => res.json(result))
-      .catch(err => res.json(err))
-})
+        .then(result => res.json(result)) // Kirim respons JSON jika berhasil
+        .catch(err => res.status(500).json(err)); // Kirim pesan kesalahan jika terjadi masalah
+});
+
+// Route untuk mendapatkan semua pengguna
+router.get('/getAllUsers', userController.getAllUsers);
+
+// Route untuk DELETE user berdasarkan ID
+router.delete('/delete/:id', userController.deleteUser);
 
 router.get('/getbyid/:id', (req, res) => {
     console.log(req.params.id)

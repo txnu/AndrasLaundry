@@ -10,6 +10,7 @@ router.post('/create', (req, res) => {
 })
 
 router.put('/edit/:id', (req, res) => {
+  const data = req.body
   console.log(data)
   layananController.edit(req.params.id, data)
     .then(result => res.json(result))
@@ -17,7 +18,7 @@ router.put('/edit/:id', (req, res) => {
 })
 
 
-router.get('/getall', (req, res) => {
+router.get('/getalllayanan', (req, res) => {
   layananController.getData()
     .then(result => res.json(result))
     .catch(err => res.json(err))
@@ -30,7 +31,7 @@ router.get('/getbyid/:id', (req, res) => {
     .catch(err => res.json(err))
 })
 
-router.delete('/hapus/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   layananController.delete(req.params.id)
     .then(result => res.json(result))
     .catch(err => res.json(err))

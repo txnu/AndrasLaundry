@@ -14,6 +14,10 @@ const userSchema = new Schema({
     password: {
         type: String
     },
+    alamat: {
+        type: String,
+        default: ''
+    },
     role: {
         type: Number,
         default: 1 // 1 user biasa 2 admin

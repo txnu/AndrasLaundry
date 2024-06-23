@@ -28,7 +28,7 @@ exports.getData = () =>
         })
       }).catch(() => reject({
         sukses: false,
-        msg: 'Gagal Mengmabil Data',
+        msg: 'Gagal Mengambil Data',
         data: []
       }))
   })

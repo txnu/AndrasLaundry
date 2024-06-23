@@ -4,7 +4,9 @@
   "description": "latihan api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "tdev.studio",
   "license": "ISC",
@@ -13,6 +15,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^6.7.0",
     "multer": "^1.4.5-lts.1"
   }

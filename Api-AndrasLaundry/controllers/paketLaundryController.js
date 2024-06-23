@@ -51,18 +51,16 @@ exports.getById = (id) =>
       }))
   })
 
-exports.edit = (id, data) =>
-  new Promise((resolve, reject) => {
-    paketLaundryModel.updateOne({
-      _id: id
-    }, data).then(() => resolve({
-      sukses: true,
-      msg: 'Berhasil Edit Data'
-    })).catch(() => reject({
-      sukses: false,
-      msg: 'Gagal Edit Data'
-    }))
-  })
+  exports.edit = (id, data) =>
+    new Promise(async (resolve, reject) => {
+      try {
+        paketLaundryModel.updateOne({ _id: id }, data)
+          .then(() => resolve({ sukses: true, msg: 'Berhasil Edit Data' }))
+          .catch((err) => reject({ sukses: false, msg: 'Gagal Edit Data' }));
+      } catch (err) {
+        reject({ sukses: false, msg: err.message });
+      }
+    });
 
 exports.delete = (id) =>
   new Promise((resolve, reject) => {
