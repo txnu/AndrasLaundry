@@ -18,10 +18,10 @@ exports.createPromo = [
     upload.single('image'),
     async (req,res) => {
         try {
-            const { promo, keterangan } = req.body;
+            const { promo, keterangan, potongan } = req.body;
             const image = req.file.filename;
 
-            const newPromo = new promoModel({ promo, keterangan, image});
+            const newPromo = new promoModel({ promo, keterangan, potongan, image});
             await newPromo.save();
 
             res.status(201).json({ message: 'Promo created successfully' });
