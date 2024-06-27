@@ -1,6 +1,7 @@
 import 'package:andraslaundry/Screens/User/widget/pelayanan_widget.dart';
 import 'package:andraslaundry/api/configAPI.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 var paketLaundry = "-1";
@@ -8,27 +9,26 @@ var layanan = "-1";
 var hargaPaketLaundry = "-1";
 
 class itemLaundry extends StatefulWidget {
-  const itemLaundry({super.key});
+  final String userId;
+  const itemLaundry(Key? key, this.userId)
+      : super(key: key);
 
   @override
   State<itemLaundry> createState() => _itemLaundryState();
 }
 
 class _itemLaundryState extends State<itemLaundry> {
-  String? namaPelanggan;
-  String? telepon;
   String? idPaket = "";
   String? idLayanan = "";
 
   var dio = Dio();
   Response? response;
   Response? response2;
+  Response? response3;
   List _paketLaundryItems = [];
   List _LayananItems = [];
 
   TextEditingController? _txtTujuanController;
-  TextEditingController txtNamaLengkap = TextEditingController();
-  TextEditingController txtTelepon = TextEditingController();
 
 // GET Paket Laundry
   getPaketLaundry() async {
@@ -77,6 +77,7 @@ class _itemLaundryState extends State<itemLaundry> {
   @override
   void initState() {
     super.initState();
+    getUser();
     getPaketLaundry();
     getLayanan();
     paketLaundry = "-1";
@@ -91,6 +92,12 @@ class _itemLaundryState extends State<itemLaundry> {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController namalengkapController;
+    TextEditingController teleponController;
+
+    namalengkapController = TextEditingController(text: namalengkap);
+    teleponController = TextEditingController(text: telepon);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Pilih Item Laundry"),
@@ -113,10 +120,11 @@ class _itemLaundryState extends State<itemLaundry> {
                     height: 50,
                   ),
                   TextFormField(
-                    controller: txtNamaLengkap,
+                    controller: namalengkapController,
                     keyboardType: TextInputType.text,
+                    enabled: false,
                     decoration: InputDecoration(
-                      labelText: "Nama Pelanggan",
+                      labelText: "a",
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -124,9 +132,11 @@ class _itemLaundryState extends State<itemLaundry> {
                     height: 20,
                   ),
                   TextFormField(
+                    controller: teleponController,
                     keyboardType: TextInputType.number,
+                    enabled: false,
                     decoration: InputDecoration(
-                      labelText: "No. Handphone",
+                      labelText: "a",
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -144,39 +154,35 @@ class _itemLaundryState extends State<itemLaundry> {
                       ),
                       ..._paketLaundryItems.map((item) {
                         return DropdownMenuItem(
-                          child: Padding(
-                            padding: const EdgeInsets.all(2),
-                            child: IntrinsicWidth(
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: 140,
-                                        child: Container(
-                                          child: Text(
-                                            item['namapaket'],
-                                            textAlign: TextAlign.left,
-                                          ),
+                          child: IntrinsicWidth(
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 140,
+                                      child: Container(
+                                        child: Text(
+                                          item['namapaket'],
+                                          textAlign: TextAlign.left,
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 100,
-                                        child: Container(
-                                          child: Text(
-                                            "Rp${item['harga'].toString()}/Kg",
-                                            textAlign: TextAlign.right,
-                                          ),
+                                    ),
+                                    SizedBox(
+                                      width: 100,
+                                      child: Container(
+                                        child: Text(
+                                          "Rp${item['harga'].toString()}/Kg",
+                                          textAlign: TextAlign.right,
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                           value: "${item['_id'].toString()}",
@@ -260,7 +266,7 @@ class _itemLaundryState extends State<itemLaundry> {
                       ),
                       child: Center(
                         child: Text(
-                          "Booking",
+                          "Konfirmasi",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -277,5 +283,37 @@ class _itemLaundryState extends State<itemLaundry> {
         ),
       ),
     );
+  }
+
+  //GET USER
+  var getDataUser;
+  var namalengkap;
+  var alamat;
+  var telepon;
+  var username;
+
+  Future<void> getUser() async {
+    try {
+      bool status;
+
+      response3 = await dio
+          .get('$urlGetByIdUser${widget.userId}', data: {'id': widget.userId});
+      status = response3!.data['sukses'];
+
+      if (status) {
+        getDataUser = response!.data['data'];
+
+        setState(() {
+          namalengkap = getDataUser['namalengkap'];
+          telepon = getDataUser['telepon'];
+        });
+      }
+    } catch (e) {}
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<Dio>('dio', dio));
   }
 }

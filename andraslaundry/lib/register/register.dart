@@ -1,6 +1,6 @@
-import 'package:andraslaundry/api/configAPI.dart';
 import 'package:andraslaundry/Login/login.dart';
 import 'package:andraslaundry/Utils/constant.dart';
+import 'package:andraslaundry/api/configAPI.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +17,14 @@ class _RegisterFormState extends State<RegisterForm> {
   String? telepon;
   String? username;
   String? password;
+  String? alamat;
   bool? remember = false;
 
   TextEditingController txtNamaLengkap = TextEditingController(),
       txtTelepon = TextEditingController(),
       txtUsername = TextEditingController(),
-      txtPassword = TextEditingController();
+      txtPassword = TextEditingController(),
+      txtAlamat = TextEditingController();
 
   @override
   void initState() {
@@ -97,12 +99,24 @@ class _RegisterFormState extends State<RegisterForm> {
                   ),
                 ),
                 SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  controller: txtAlamat,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    labelText: "Alamat",
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.abc),
+                  ),
+                ),
+                SizedBox(
                   height: 40,
                 ),
                 InkWell(
                   onTap: () {
                     prosesRegistrasi(txtNamaLengkap.text, txtTelepon.text,
-                        txtUsername.text, txtPassword.text);
+                        txtUsername.text, txtPassword.text, txtAlamat.text);
                   },
                   child: Container(
                     height: 50,
@@ -136,7 +150,8 @@ class _RegisterFormState extends State<RegisterForm> {
   var dio = Dio();
   Response? response;
 
-  void prosesRegistrasi(namalengkap, telepon, username, password) async {
+  void prosesRegistrasi(
+      namalengkap, telepon, username, password, alamat) async {
     utilApps.showDialog(context);
 
     bool status;
@@ -147,7 +162,8 @@ class _RegisterFormState extends State<RegisterForm> {
         'namalengkap': namalengkap,
         'telepon': telepon,
         'username': username,
-        'password': password
+        'password': password,
+        'alamat': alamat,
       });
       status = response!.data['sukses'];
       msg = response!.data['msg'];

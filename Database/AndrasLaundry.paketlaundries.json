@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "65d6ec8047ac9ba375dbac5d"
+  },
+  "namapaket": "Paket Lengkap",
+  "harga": "8000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65d6eedc47ac9ba375dbac60"
+  },
+  "namapaket": "Cuci Saja",
+  "harga": "6000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dc50a532889bc711913be0"
+  },
+  "namapaket": "Cuci Setrika",
+  "harga": "7.000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dc50b432889bc711913be2"
+  },
+  "namapaket": "Cuci Kering",
+  "harga": "7.000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65dc50c332889bc711913be4"
+  },
+  "namapaket": "Cuci Lipat",
+  "harga": "7.000",
+  "__v": 0
+}]
