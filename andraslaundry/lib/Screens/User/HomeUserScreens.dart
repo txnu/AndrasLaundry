@@ -23,7 +23,14 @@ class HomeUserScreens extends StatefulWidget {
 
 class _HomeUserScreensState extends State<HomeUserScreens> {
   var height, width;
-  late String uid = widget.userId;
+  late String uid;
+
+  @override
+  void initState() {
+    super.initState();
+    uid = widget.userId;
+    getUser();
+  }
 
   List imgData = [
     "assets/images/laundry.png",
@@ -41,13 +48,6 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
     "Informasi Promo"
   ];
 
-  List<Widget> pages = [
-    itemLaundry(userId: widget.userId),
-    AntarJemputWidget(),
-    Pelayanan(),
-    TerimaBarang(),
-  ];
-
   List layanan = [];
   int myCurrentIndex = 0;
 
@@ -59,15 +59,16 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    getUser();
-  }
-
-  @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
+
+    List pages = [
+      itemLaundry(userId: widget.userId),
+      AntarJemputWidget(),
+      Pelayanan(),
+      TerimaBarang(),
+    ];
 
     return Scaffold(
       body: RefreshIndicator(

@@ -10,8 +10,7 @@ var hargaPaketLaundry = "-1";
 
 class itemLaundry extends StatefulWidget {
   final String userId;
-  const itemLaundry(Key? key, this.userId)
-      : super(key: key);
+  const itemLaundry({Key? key, required this.userId}) : super(key: key);
 
   @override
   State<itemLaundry> createState() => _itemLaundryState();
