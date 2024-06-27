@@ -23,6 +23,7 @@ class HomeUserScreens extends StatefulWidget {
 
 class _HomeUserScreensState extends State<HomeUserScreens> {
   var height, width;
+  late String uid = widget.userId;
 
   List imgData = [
     "assets/images/laundry.png",
@@ -40,8 +41,8 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
     "Informasi Promo"
   ];
 
-  List pages = [
-    itemLaundry(),
+  List<Widget> pages = [
+    itemLaundry(userId: widget.userId),
     AntarJemputWidget(),
     Pelayanan(),
     TerimaBarang(),
@@ -107,6 +108,7 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
                                         userId: widget.userId,
                                         namalengkap: namalengkap,
                                         telepon: telepon,
+                                        alamat: alamat,
                                         username: username,
                                         password: widget.password,
                                       ),
@@ -241,6 +243,7 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
   Response? response;
   var getDataUser;
   var namalengkap;
+  var alamat;
   var telepon;
   var username;
 
@@ -258,6 +261,7 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
         setState(() {
           namalengkap = getDataUser['namalengkap'];
           telepon = getDataUser['telepon'];
+          alamat = getDataUser['alamat'];
           username = getDataUser['username'];
         });
       }

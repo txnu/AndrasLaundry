@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "65d7943dbf94178acaa78f77"
+  },
+  "layanan": "Antar-Jemput",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65d7944ebf94178acaa78f79"
+  },
+  "layanan": "Langsung datang aja deh",
+  "__v": 0
+}]

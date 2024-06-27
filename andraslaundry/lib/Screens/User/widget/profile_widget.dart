@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   final String namalengkap;
   final String telepon;
+  final String alamat;
   final String username;
   final String password;
   final String userId;
@@ -15,6 +16,7 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({
     required this.namalengkap,
     required this.telepon,
+    required this.alamat,
     required this.username,
     required this.password,
     required this.userId,
@@ -24,11 +26,13 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     late TextEditingController namalengkapController;
     late TextEditingController teleponController;
+    late TextEditingController AlamatController;
     late TextEditingController usernameController;
     late TextEditingController passwordController;
 
     namalengkapController = TextEditingController(text: namalengkap);
     teleponController = TextEditingController(text: telepon);
+    AlamatController = TextEditingController(text: alamat);
     usernameController = TextEditingController(text: username);
     passwordController = TextEditingController(text: password);
 
@@ -67,6 +71,17 @@ class ProfilePage extends StatelessWidget {
                 height: 40,
               ),
               TextFormField(
+                controller: AlamatController,
+                decoration: InputDecoration(
+                  labelText: "Alamat",
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.map),
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              TextFormField(
                 controller: usernameController,
                 decoration: InputDecoration(
                   labelText: "Username",
@@ -96,6 +111,7 @@ class ProfilePage extends StatelessWidget {
                       userId,
                       namalengkapController.text,
                       teleponController.text,
+                      AlamatController.text,
                       usernameController.text,
                       passwordController.text);
                 },
@@ -128,8 +144,14 @@ class ProfilePage extends StatelessWidget {
   var dio = Dio();
   Response? response;
 
-  Future<void> editUser(BuildContext context, String userId, String newName,
-      String newTelepon, String newUsername, String newPassword) async {
+  Future<void> editUser(
+      BuildContext context,
+      String userId,
+      String newName,
+      String newTelepon,
+      String newAlamat,
+      String newUsername,
+      String newPassword) async {
     utilApps.showDialog(context);
 
     bool status;
@@ -140,6 +162,7 @@ class ProfilePage extends StatelessWidget {
         '_id': userId,
         'namalengkap': newName,
         'telepon': newTelepon,
+        'alamat': newAlamat,
         'username': newUsername,
         'password': newPassword
       });
@@ -164,6 +187,7 @@ class ProfilePage extends StatelessWidget {
                   userId: userId,
                   namalengkap: newName,
                   telepon: newTelepon,
+                  alamat: newAlamat,
                   username: newUsername,
                   password: newPassword,
                 ),
