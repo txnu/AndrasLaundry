@@ -1,15 +1,20 @@
-import 'package:andraslaundry/Screens/User/widget/pelayanan_widget.dart';
+// ignore_for_file: unused_local_variable, unused_label
+
+import 'package:andraslaundry/Utils/constant.dart';
 import 'package:andraslaundry/api/configAPI.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 var paketLaundry = "-1";
-var layanan = "-1";
 var hargaPaketLaundry = "-1";
+var layanan = "-1";
+var promo = "-1";
 
 class itemLaundry extends StatefulWidget {
   final String userId;
+
   const itemLaundry({Key? key, required this.userId}) : super(key: key);
 
   @override
@@ -17,27 +22,48 @@ class itemLaundry extends StatefulWidget {
 }
 
 class _itemLaundryState extends State<itemLaundry> {
-  String? idPaket = "";
-  String? idLayanan = "";
+  String? paketLaundry;
+  String? layanan;
+  String? promo;
+  late String uid = widget.userId;
 
   var dio = Dio();
-  Response? response;
-  Response? response2;
-  Response? response3;
+  Response? responsePaketLaundry;
+  Response? responseLayanan;
+  Response? responseUser;
+  Response? responseTransaksi;
+  Response? responsePromo;
+
   List _paketLaundryItems = [];
   List _LayananItems = [];
+  List _PromoItems = [];
 
   TextEditingController? _txtTujuanController;
+// GET Promo
+  getPromo() async {
+    bool status;
+    try {
+      responsePromo = await dio.get(urlGetAllPromo);
+      status = responsePromo!.statusCode == 200;
+      if (status) {
+        setState(() {
+          _PromoItems = responsePromo!.data['data'];
+        });
+      } else {
+        print("Error");
+      }
+    } catch (e) {}
+  }
 
 // GET Paket Laundry
   getPaketLaundry() async {
     bool status;
     try {
-      response = await dio.get(urlGetAllPaket);
-      status = response!.data['sukses'];
+      responsePaketLaundry = await dio.get(urlGetAllPaket);
+      status = responsePaketLaundry!.data['sukses'];
       if (status) {
         setState(() {
-          _paketLaundryItems = response!.data['data'];
+          _paketLaundryItems = responsePaketLaundry!.data['data'];
         });
       } else {
         print("Error");
@@ -49,21 +75,16 @@ class _itemLaundryState extends State<itemLaundry> {
   getLayanan() async {
     bool status;
     try {
-      response2 = await dio.get(urlGetAllLayanan);
-      status = response2!.data['sukses'];
+      responseLayanan = await dio.get(urlGetAllLayanan);
+      status = responseLayanan!.data['sukses'];
       if (status) {
         setState(() {
-          _LayananItems = response2!.data['data'];
+          _LayananItems = responseLayanan!.data['data'];
         });
       } else {
         print("Error");
       }
     } catch (e) {}
-  }
-
-// POST Booking
-  Transaksi() async {
-    try {} catch (e) {}
   }
 
 //Handle Refresh
@@ -79,6 +100,7 @@ class _itemLaundryState extends State<itemLaundry> {
     getUser();
     getPaketLaundry();
     getLayanan();
+    getPromo();
     paketLaundry = "-1";
     layanan = "-1";
   }
@@ -91,15 +113,29 @@ class _itemLaundryState extends State<itemLaundry> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController namalengkapController;
-    TextEditingController teleponController;
+    late TextEditingController namalengkapController;
+    late TextEditingController teleponController;
+    late TextEditingController alamatController;
 
     namalengkapController = TextEditingController(text: namalengkap);
     teleponController = TextEditingController(text: telepon);
+    alamatController = TextEditingController(text: alamat);
+
+    String? _selectedPaketId;
+    String? _selectedLayananId;
+    String? _selectedPromoId;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Pilih Item Laundry"),
+        title: Text(
+          "Transaksi",
+          style: TextStyle(
+            fontSize: 25,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.indigo,
       ),
       body: RefreshIndicator(
@@ -120,10 +156,13 @@ class _itemLaundryState extends State<itemLaundry> {
                   ),
                   TextFormField(
                     controller: namalengkapController,
-                    keyboardType: TextInputType.text,
                     enabled: false,
                     decoration: InputDecoration(
-                      labelText: "a",
+                      labelText: "Nama Pelanggan",
+                      disabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.black), // Add this line
+                      ),
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -132,10 +171,28 @@ class _itemLaundryState extends State<itemLaundry> {
                   ),
                   TextFormField(
                     controller: teleponController,
-                    keyboardType: TextInputType.number,
                     enabled: false,
                     decoration: InputDecoration(
-                      labelText: "a",
+                      labelText: "No. Handphone",
+                      disabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.black), // Add this line
+                      ),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    controller: alamatController,
+                    enabled: false,
+                    decoration: InputDecoration(
+                      labelText: "Alamat",
+                      disabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.black), // Add this line
+                      ),
                       border: OutlineInputBorder(),
                     ),
                   ),
@@ -152,6 +209,12 @@ class _itemLaundryState extends State<itemLaundry> {
                         value: "-1",
                       ),
                       ..._paketLaundryItems.map((item) {
+                        onTap:
+                        () {
+                          setState(() {
+                            _selectedPaketId = item['idPaket'].toString();
+                          });
+                        };
                         return DropdownMenuItem(
                           child: IntrinsicWidth(
                             child: Column(
@@ -207,6 +270,13 @@ class _itemLaundryState extends State<itemLaundry> {
                         value: "-1",
                       ),
                       ..._LayananItems.map((itemLayanan) {
+                        onTap:
+                        () {
+                          setState(() {
+                            _selectedPaketId =
+                                itemLayanan['idLayanan'].toString();
+                          });
+                        };
                         return DropdownMenuItem(
                           child: Padding(
                             padding: const EdgeInsets.all(0),
@@ -224,38 +294,87 @@ class _itemLaundryState extends State<itemLaundry> {
                       setState(() {
                         layanan = value!;
 
-                        if (value == "65d7943dbf94178acaa78f77") {
-                          // replace "specific_package_id" with the actual package id you want to trigger the text field
-                          _txtTujuanController = TextEditingController();
-                        } else {
-                          _txtTujuanController?.dispose();
-                          _txtTujuanController = null;
-                        }
+                        // if (value == "65d7943dbf94178acaa78f77") {
+                        //   // replace "specific_package_id" with the actual package id you want to trigger the text field
+                        //   _txtTujuanController = TextEditingController();
+                        // } else {
+                        //   _txtTujuanController?.dispose();
+                        //   _txtTujuanController = null;
+                        // }
                       });
                     },
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  if (_txtTujuanController != null)
-                    TextFormField(
-                      controller: _txtTujuanController,
-                      decoration: InputDecoration(
-                        labelText: "Tambah Titik Jemput Disini ya😊",
-                        border: OutlineInputBorder(),
-                      ),
+                  if (_PromoItems.isNotEmpty)
+                    DropdownButtonFormField<String>(
+                      decoration: InputDecoration(border: OutlineInputBorder()),
+                      value: promo,
+                      items: [
+                        DropdownMenuItem(
+                          enabled: false,
+                          child: Text(
+                            "Pilih Promo",
+                          ),
+                          value: "-1",
+                        ),
+                        ..._PromoItems.map((item) {
+                          // onTap:
+                          // () {
+                          //   setState(() {
+                          //     _selectedPromoId = item['idPromo'].toString();
+                          //   });
+                          // };
+                          return DropdownMenuItem(
+                            child: IntrinsicWidth(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: 140,
+                                        child: Container(
+                                          child: Text(
+                                            item['promo'],
+                                            textAlign: TextAlign.left,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 150,
+                                        child: Container(
+                                          child: Text(
+                                            "Rp${item['potongan']}",
+                                            textAlign: TextAlign.right,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            value: "${item['_id'].toString()}",
+                          );
+                        })
+                      ],
+                      onChanged: (String? value) {
+                        setState(() {
+                          promo = value!;
+                        });
+                      },
                     ),
                   SizedBox(
                     height: 50,
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Pelayanan(),
-                        ),
-                      );
+                      prosesTransaksi();
                     },
                     child: Container(
                       height: 50,
@@ -290,22 +409,78 @@ class _itemLaundryState extends State<itemLaundry> {
   var alamat;
   var telepon;
   var username;
-
   Future<void> getUser() async {
     try {
       bool status;
 
-      response3 = await dio
+      responseUser = await dio
           .get('$urlGetByIdUser${widget.userId}', data: {'id': widget.userId});
-      status = response3!.data['sukses'];
+      status = responseUser!.data['sukses'];
 
       if (status) {
-        getDataUser = response!.data['data'];
+        getDataUser = responseUser!.data['data'];
 
         setState(() {
           namalengkap = getDataUser['namalengkap'];
           telepon = getDataUser['telepon'];
+          alamat = getDataUser['alamat'];
         });
+      }
+    } catch (e) {}
+  }
+
+//Create Transaksi
+  void prosesTransaksi() async {
+    utilApps.showDialog(context);
+
+    bool status;
+    var msg;
+
+    try {
+      responseTransaksi = await dio.post(urlCreateTransaksi, data: {
+        'idUser': uid,
+        'idPaket': paketLaundry,
+        'idLayanan': layanan,
+        'idPromo': promo,
+      });
+      status = responseTransaksi!.data['sukses'];
+      msg = responseTransaksi!.data['msg'];
+
+      if (status) {
+        AwesomeDialog(
+          context: context,
+          animType: AnimType.rightSlide,
+          headerAnimationLoop: false,
+          dialogType: DialogType.success,
+          showCloseIcon: true,
+          title: 'Berhasil',
+          desc:
+              'Proses Transaksimu berhasil, silahkan tunggu konfirmasi mimin ya😊',
+          btnOkOnPress: () {
+            utilApps.hideDialog(context);
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => itemLaundry(
+                  userId: widget.userId,
+                ),
+              ),
+            );
+          },
+        ).show();
+      } else {
+        AwesomeDialog(
+          context: context,
+          animType: AnimType.rightSlide,
+          headerAnimationLoop: false,
+          dialogType: DialogType.error,
+          showCloseIcon: true,
+          title: 'Gagal',
+          desc: 'Aduh Transaksi Kamu Gagal karna $msg',
+          btnOkOnPress: () {
+            utilApps.hideDialog(context);
+          },
+        ).show();
       }
     } catch (e) {}
   }

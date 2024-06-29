@@ -3,6 +3,7 @@ import 'package:andraslaundry/Screens/User/widget/antar_jemput_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/item_laundry_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/pelayanan_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/profile_widget.dart';
+import 'package:andraslaundry/Screens/User/widget/promo_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/terima_barang_widget.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +24,10 @@ class HomeUserScreens extends StatefulWidget {
 
 class _HomeUserScreensState extends State<HomeUserScreens> {
   var height, width;
-  late String uid;
 
   @override
   void initState() {
     super.initState();
-    uid = widget.userId;
     getUser();
   }
 
@@ -68,6 +67,7 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
       AntarJemputWidget(),
       Pelayanan(),
       TerimaBarang(),
+      Promo(),
     ];
 
     return Scaffold(

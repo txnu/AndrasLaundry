@@ -8,16 +8,16 @@ String urlUser = '$baseUrl/user/';
 String urlEditUser = '$baseUrl/user/edit/';
 String urlGetByIdUser = '$baseUrl/user/getbyid/';
 
+// Transaksi
+String urlCreateTransaksi = '$baseUrl/transaksi/create';
+
+//Promo
+String urlGetAllPromo = '$baseUrl/promo/getAllPromos';
+
 //Paket Laundry
 String urlGetAllPaket = '$baseUrl/paket/getallpaket';
 String urlGetbyIdPaket = '$baseUrl/paket/getbyid/:id';
-// String urlCreatePaket = '$baseUrl/paket/create';
-// String urlEditPaket = '$baseUrl/paket/edit/:id';
-// String urlHapusPaket = '$baseUrl/paket/hapus';
 
 //Layanan Laundry
 String urlGetAllLayanan = '$baseUrl/layanan/getalllayanan';
 String urlGetbyIdLayanan = '$baseUrl/layanan/getbyid/:id';
-// String urlCreateLayanan = '$baseUrl/layanan/create';
-// String urlEditLayanan = '$baseUrl/layanan/edit';
-// String urlHapusLayanan = '$baseUrl/layanan/hapus';

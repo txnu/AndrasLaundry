@@ -1,4 +1,5 @@
-import 'package:andraslaundry/Screens/Admin/HomeAdminScreens.dart';
+// ignore_for_file: unused_local_variable
+
 import 'package:andraslaundry/Screens/User/HomeUserScreens.dart';
 import 'package:andraslaundry/Utils/constant.dart';
 import 'package:andraslaundry/api/configAPI.dart';
@@ -174,24 +175,43 @@ class _LoginFormState extends State<LoginForm> {
             btnOkOnPress: () {
               utilApps.hideDialog(context);
               dataUser = response!.data['data'];
-              if (dataUser['role'] == 1) {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeUserScreens(
-                      userId: userId.toString(),
-                      password: password.toString(),
-                    ),
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeUserScreens(
+                    userId: userId.toString(),
+                    password: password.toString(),
                   ),
-                );
-              } else {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeAdminScreens(),
-                  ),
-                );
-              }
+                ),
+              );
+              // if (dataUser['role'] == 1) {
+              //   Navigator.pushReplacement(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => HomeUserScreens(
+              //         userId: userId.toString(),
+              //         password: password.toString(),
+              //       ),
+              //     ),
+              //   );
+              // if (dataUser['role'] == 1) {
+              //   Navigator.pushReplacement(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => HomeUserScreens(
+              //         userId: userId.toString(),
+              //         password: password.toString(),
+              //       ),
+              //     ),
+              //   );
+              // } else {
+              //   Navigator.pushReplacement(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => HomeAdminScreens(),
+              //     ),
+              //   );
+              // }
             }).show();
       } else {
         AwesomeDialog(
