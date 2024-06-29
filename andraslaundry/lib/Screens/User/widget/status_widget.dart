@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class AntarJemputWidget extends StatefulWidget {
-  const AntarJemputWidget({super.key});
+class StatusWidget extends StatefulWidget {
+  const StatusWidget({super.key});
 
   @override
-  State createState() => _AntarJemputWidgetState();
+  State createState() => _StatusWidgetState();
 }
 
-class _AntarJemputWidgetState extends State {
+class _StatusWidgetState extends State {
   late GoogleMapController mapController;
 
   // static const LatLng sourceLocation =
@@ -26,7 +26,7 @@ class _AntarJemputWidgetState extends State {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
-            title: const Text('Dimanakah aku?'),
+            title: const Text('Status Laundry'),
             backgroundColor: Colors.green[700],
           ),
           body: Text('a')),

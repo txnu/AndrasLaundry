@@ -1,5 +1,5 @@
 import 'package:andraslaundry/API/configAPI.dart';
-import 'package:andraslaundry/Screens/User/widget/antar_jemput_widget.dart';
+import 'package:andraslaundry/Screens/User/widget/status_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/item_laundry_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/pelayanan_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/profile_widget.dart';
@@ -64,7 +64,7 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
 
     List pages = [
       itemLaundry(userId: widget.userId),
-      AntarJemputWidget(),
+      StatusWidget(),
       Pelayanan(),
       TerimaBarang(),
       Promo(),
