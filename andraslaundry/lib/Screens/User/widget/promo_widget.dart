@@ -1,6 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
-import 'package:andraslaundry/api/configAPI.dart';
+import 'package:andraslaundry/API/configAPI.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 

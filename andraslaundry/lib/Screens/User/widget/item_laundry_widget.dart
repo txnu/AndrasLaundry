@@ -103,6 +103,7 @@ class _itemLaundryState extends State<itemLaundry> {
     getPromo();
     paketLaundry = "-1";
     layanan = "-1";
+    promo = "-1";
   }
 
   @override

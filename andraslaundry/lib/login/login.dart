@@ -1,8 +1,8 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:andraslaundry/API/configAPI.dart';
 import 'package:andraslaundry/Screens/User/HomeUserScreens.dart';
 import 'package:andraslaundry/Utils/constant.dart';
-import 'package:andraslaundry/api/configAPI.dart';
 import 'package:andraslaundry/register/register.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
