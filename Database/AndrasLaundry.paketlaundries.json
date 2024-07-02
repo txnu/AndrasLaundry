@@ -1,5 +1,13 @@
 [{
   "_id": {
+    "$oid": "66780a1b41a0cdcba74e5951"
+  },
+  "namapaket": "Cuci - Setrika",
+  "harga": "10000",
+  "__v": 0
+},
+{
+  "_id": {
     "$oid": "65d6ec8047ac9ba375dbac5d"
   },
   "namapaket": "Paket Lengkap",
