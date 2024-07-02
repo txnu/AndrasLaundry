@@ -1,0 +1,186 @@
+[{
+  "_id": {
+    "$oid": "667e552e960df4b365bdb783"
+  },
+  "idUser": {
+    "$oid": "6677fd60c987a0018cf0d4f4"
+  },
+  "idPaket": {
+    "$oid": "65dc50c332889bc711913be4"
+  },
+  "idLayanan": {
+    "$oid": "65d7944ebf94178acaa78f79"
+  },
+  "idPromo": null,
+  "status": 0,
+  "buktiPembayaran": null,
+  "berat": 0,
+  "detail": null,
+  "tanggal": {
+    "$date": "2024-06-27T17:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667e5759960df4b365bdb7a0"
+  },
+  "idUser": {
+    "$oid": "6677fd60c987a0018cf0d4f4"
+  },
+  "idPaket": {
+    "$oid": "65d6eedc47ac9ba375dbac60"
+  },
+  "idLayanan": {
+    "$oid": "66780a3241a0cdcba74e5956"
+  },
+  "idPromo": null,
+  "status": 0,
+  "buktiPembayaran": null,
+  "berat": 0,
+  "detail": null,
+  "tanggal": {
+    "$date": "2024-06-27T17:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667e581c960df4b365bdb7b1"
+  },
+  "idUser": {
+    "$oid": "6677fd60c987a0018cf0d4f4"
+  },
+  "idPaket": {
+    "$oid": "65dc50b432889bc711913be2"
+  },
+  "idLayanan": {
+    "$oid": "66780a3241a0cdcba74e5956"
+  },
+  "idPromo": null,
+  "status": 0,
+  "buktiPembayaran": null,
+  "berat": 0,
+  "detail": null,
+  "tanggal": {
+    "$date": "2024-06-27T17:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667e596f960df4b365bdb7be"
+  },
+  "idUser": {
+    "$oid": "6677fd60c987a0018cf0d4f4"
+  },
+  "idPaket": {
+    "$oid": "65dc50a532889bc711913be0"
+  },
+  "idLayanan": {
+    "$oid": "66780a3241a0cdcba74e5956"
+  },
+  "idPromo": null,
+  "status": 0,
+  "buktiPembayaran": null,
+  "berat": 0,
+  "detail": null,
+  "tanggal": {
+    "$date": "2024-06-27T17:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667ed7638d8e7a4b9a092955"
+  },
+  "idUser": {
+    "$oid": "6677fd60c987a0018cf0d4f4"
+  },
+  "idPaket": {
+    "$oid": "66780a1b41a0cdcba74e5951"
+  },
+  "idLayanan": {
+    "$oid": "65d7944ebf94178acaa78f79"
+  },
+  "idPromo": null,
+  "status": 0,
+  "buktiPembayaran": null,
+  "berat": 0,
+  "detail": null,
+  "tanggal": {
+    "$date": "2024-06-27T17:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667ee8e58d8e7a4b9a0929e3"
+  },
+  "idUser": {
+    "$oid": "6677fd60c987a0018cf0d4f4"
+  },
+  "idPaket": {
+    "$oid": "65d6ec8047ac9ba375dbac5d"
+  },
+  "idLayanan": {
+    "$oid": "65d7944ebf94178acaa78f79"
+  },
+  "idPromo": {
+    "$oid": "667ee8b28d8e7a4b9a0929dd"
+  },
+  "status": 1,
+  "buktiPembayaran": null,
+  "berat": 2,
+  "detail": "Baju : 2 Helai",
+  "tanggal": {
+    "$date": "2024-06-27T17:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66842e3453152b8d760865e0"
+  },
+  "idUser": {
+    "$oid": "66842c6b53152b8d760865c9"
+  },
+  "idPaket": {
+    "$oid": "66780a1b41a0cdcba74e5951"
+  },
+  "idLayanan": {
+    "$oid": "65d7943dbf94178acaa78f77"
+  },
+  "idPromo": null,
+  "status": 4,
+  "buktiPembayaran": null,
+  "berat": 16,
+  "detail": "Baju : 8 Helai\r\nCelana : 20 Helai",
+  "tanggal": {
+    "$date": "2024-07-01T17:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66842e8453152b8d760865f2"
+  },
+  "idUser": {
+    "$oid": "66842c6b53152b8d760865c9"
+  },
+  "idPaket": {
+    "$oid": "65d6eedc47ac9ba375dbac60"
+  },
+  "idLayanan": {
+    "$oid": "66780a3241a0cdcba74e5956"
+  },
+  "idPromo": null,
+  "status": 0,
+  "buktiPembayaran": null,
+  "berat": 0,
+  "detail": null,
+  "tanggal": {
+    "$date": "2024-07-01T17:00:00.000Z"
+  },
+  "__v": 0
+}]

@@ -442,7 +442,7 @@ class _itemLaundryState extends State<itemLaundry> {
         'idUser': uid,
         'idPaket': paketLaundry,
         'idLayanan': layanan,
-        'idPromo': promo,
+        'idPromo': null,
       });
       status = responseTransaksi!.data['sukses'];
       msg = responseTransaksi!.data['msg'];
