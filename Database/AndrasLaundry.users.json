@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "6677fd60c987a0018cf0d4f4"
+  },
+  "namalengkap": "Tanu Wijaya",
+  "telepon": "085262872396",
+  "username": "tanu",
+  "password": "$2b$10$koVCBcJcXt3XNQPzb7pgZOLKDRShzGNBW6hCz0lgy0fqP5YmwG41.",
+  "alamat": "Kompelek Zal khatulistiwa Blok E No.3, Sungai bangkong, Pontianak kota",
+  "role": 3,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6678120fe69f23cb54d695ad"
+  },
+  "namalengkap": "Tanu",
+  "telepon": "081111111",
+  "username": "tanu",
+  "password": "$2b$10$caPgHZ0/H7k/0wmwdEQwR.chdrMXyRb8T5acvY3QkBJkTlT8DHkJi",
+  "alamat": "Pontianak",
+  "role": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66842c6b53152b8d760865c9"
+  },
+  "namalengkap": "Septiningrum",
+  "telepon": "+6281545045546",
+  "username": "septi",
+  "password": "$2b$10$yxSAptFBszsyDOqJ.H2sH.mpb7K58O8ynOE81viy39Cy2EFJb57KC",
+  "alamat": "samba",
+  "role": 1,
+  "__v": 0
+}]
