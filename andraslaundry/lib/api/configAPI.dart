@@ -10,6 +10,7 @@ String urlGetByIdUser = '$baseUrl/user/getbyid/';
 
 // Transaksi
 String urlCreateTransaksi = '$baseUrl/transaksi/create';
+String urlGetbyIdTransaksi = '$baseUrl/transaksi/getTransaksiById/';
 
 //Promo
 String urlGetAllPromo = '$baseUrl/promo/getAllPromos';

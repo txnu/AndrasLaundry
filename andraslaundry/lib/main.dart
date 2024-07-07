@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => LoginForm(),
-        "transaksi": (context) => TransaksiScreen()
+        "transaksi": (context) => TransaksiScreen(),
       },
     );
   }
