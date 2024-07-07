@@ -46,7 +46,7 @@ class _RegisterFormState extends State<RegisterForm> {
             child: Column(
               children: [
                 Image.asset(
-                  "images/laundry.png",
+                  "assets/images/laundry.png",
                   height: 140,
                   width: 140,
                 ),
