@@ -1,8 +1,10 @@
 import 'package:andraslaundry/API/configAPI.dart';
 import 'package:andraslaundry/Utils/constant.dart';
+import 'package:andraslaundry/login/login.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class ProfilePage extends StatelessWidget {
@@ -134,6 +136,32 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 12,
+              ),
+              InkWell(
+                onTap: () async {
+                  _showLogoutConfirmationDialog(context);
+                },
+                child: Container(
+                  height: 50,
+                  width: 170,
+                  decoration: BoxDecoration(
+                    color: Colors.indigo,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Logout",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           )),
         ),
@@ -210,5 +238,38 @@ class ProfilePage extends StatelessWidget {
         ).show();
       }
     } catch (e) {}
+  }
+
+  Future<void> _showLogoutConfirmationDialog(BuildContext context) async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Konfirmasi Logout'),
+          content: Text('Apakah Anda yakin ingin logout?'),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Batal'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Logout'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                logout(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> logout(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 }

@@ -1,4 +1,4 @@
-String baseUrl = 'http://192.168.18.41:5001';
+String baseUrl = 'http://172.20.10.3:5001';
 // String baseUrl = 'http://172.16.0.148:5001';
 
 //Login dan Register
@@ -10,6 +10,7 @@ String urlGetByIdUser = '$baseUrl/user/getbyid/';
 
 // Transaksi
 String urlCreateTransaksi = '$baseUrl/transaksi/create';
+String urlGetbyIdTransaksi = '$baseUrl/transaksi/getTransaksiById/';
 
 //Promo
 String urlGetAllPromo = '$baseUrl/promo/getAllPromos';

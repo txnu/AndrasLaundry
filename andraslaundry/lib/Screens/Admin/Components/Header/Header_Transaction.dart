@@ -15,7 +15,6 @@ class HeaderTransaction extends StatelessWidget {
         if (!responsive.isDesktop(context)) Menu(),
         Text(
           "Transaksi",
-          style: Theme.of(context).textTheme.headline4,
         ),
         Spacer(),
         IconButton(

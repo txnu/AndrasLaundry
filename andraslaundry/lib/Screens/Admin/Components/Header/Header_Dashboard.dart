@@ -16,7 +16,6 @@ class Header extends StatelessWidget {
         if (!responsive.isDesktop(context)) Menu(),
         Text(
           "Dashboard",
-          style: Theme.of(context).textTheme.headline4,
         ),
         Spacer(),
         Expanded(

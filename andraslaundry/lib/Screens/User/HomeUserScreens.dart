@@ -4,7 +4,7 @@ import 'package:andraslaundry/Screens/User/widget/item_laundry_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/pelayanan_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/profile_widget.dart';
 import 'package:andraslaundry/Screens/User/widget/promo_widget.dart';
-import 'package:andraslaundry/Screens/User/widget/terima_barang_widget.dart';
+import 'package:andraslaundry/Screens/User/widget/riwayat_laundry_widget.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +41,7 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
 
   List titles = [
     "Item Laundry",
-    "Antar Jemput",
+    "Status",
     "Pelayanan",
     "Riwayat Laundry",
     "Informasi Promo"
@@ -66,7 +66,7 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
       itemLaundry(userId: widget.userId),
       StatusWidget(),
       Pelayanan(),
-      TerimaBarang(),
+      RiwayatLaundryWidget(userId: widget.userId),
       Promo(),
     ];
 

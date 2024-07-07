@@ -337,21 +337,25 @@ class _itemLaundryState extends State<itemLaundry> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      SizedBox(
-                                        width: 140,
-                                        child: Container(
-                                          child: Text(
-                                            item['promo'],
-                                            textAlign: TextAlign.left,
+                                      Expanded(
+                                        child: SizedBox(
+                                          width: 160,
+                                          child: Container(
+                                            child: Text(
+                                              item['promo'],
+                                              textAlign: TextAlign.left,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 150,
-                                        child: Container(
-                                          child: Text(
-                                            "Rp${item['potongan']}",
-                                            textAlign: TextAlign.right,
+                                      Expanded(
+                                        child: SizedBox(
+                                          width: 80,
+                                          child: Container(
+                                            child: Text(
+                                              "Rp${item['potongan']}",
+                                              textAlign: TextAlign.right,
+                                            ),
                                           ),
                                         ),
                                       )
@@ -442,7 +446,7 @@ class _itemLaundryState extends State<itemLaundry> {
         'idUser': uid,
         'idPaket': paketLaundry,
         'idLayanan': layanan,
-        'idPromo': null,
+        'idPromo': promo,
       });
       status = responseTransaksi!.data['sukses'];
       msg = responseTransaksi!.data['msg'];
