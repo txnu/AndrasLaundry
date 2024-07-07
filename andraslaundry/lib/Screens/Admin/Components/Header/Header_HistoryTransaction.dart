@@ -15,7 +15,7 @@ class HeaderHistoryTransaction extends StatelessWidget {
         if (!responsive.isDesktop(context)) Menu(),
         Text(
           "Riwayat Transaksi",
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         Spacer(),
         IconButton(

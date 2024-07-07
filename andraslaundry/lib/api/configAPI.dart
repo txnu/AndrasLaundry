@@ -1,4 +1,4 @@
-String baseUrl = 'http://192.168.18.41:5001';
+String baseUrl = 'http://10.0.2.2:5001';
 // String baseUrl = 'http://172.16.0.148:5001';
 
 //Login dan Register

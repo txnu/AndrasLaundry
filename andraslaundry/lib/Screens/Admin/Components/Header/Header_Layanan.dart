@@ -15,7 +15,7 @@ class HeaderLayanan extends StatelessWidget {
         if (!responsive.isDesktop(context)) Menu(),
         Text(
           "Layanan",
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.bodySmall,
         ),
         Spacer(),
         IconButton(
