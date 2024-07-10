@@ -27,6 +27,14 @@ exports.register = (data) =>
         })
     })
 
+    exports.editStatusDriver = (id, data) =>
+        new Promise((resolve, reject) => {
+            userModel.updateOne({ _id: id }, { status: data['status'] })
+            .then(() => resolve({ sukses: true, msg: 'Berhasil Mengupdate Status Driver' }))
+            .catch((error) => reject({ sukses: false, msg: 'Gagal Mengupdate Status Driver', error: error.message }));
+        });
+
+
 exports.login = (data) =>
     new Promise((resolve, reject) => {
         userModel.findOne({

@@ -21,6 +21,10 @@ const userSchema = new Schema({
     role: {
         type: Number,
         default: 1 // 1 user biasa 2 admin
+    },
+    status: {
+        type: Number,
+        default: 0 // 0 tidak ready 1 ready
     }
 })
 
