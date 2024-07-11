@@ -25,6 +25,15 @@ router.put('/edit/:id', (req, res) => {
         .then(result => res.json(result)) // Kirim respons JSON jika berhasil
         .catch(err => res.status(500).json(err)); // Kirim pesan kesalahan jika terjadi masalah
 });
+// Route untuk mengedit status pengguna berdasarkan ID
+router.put('/edit-status-driver/:id', (req, res) => {
+    const data = req.body; // Ambil data dari body permintaan
+    console.log(data); // Log data untuk keperluan debugging
+
+    userController.editStatusDriver(req.params.id, data)
+        .then(result => res.json(result)) // Kirim respons JSON jika berhasil
+        .catch(err => res.status(500).json(err)); // Kirim pesan kesalahan jika terjadi masalah
+});
 
 // Route untuk mendapatkan semua pengguna
 router.get('/getAllUsers', userController.getAllUsers);
