@@ -157,6 +157,46 @@ exports.updateTransaksi = async (req, res) => {
     }
 };
 
+exports.ambilOrderan = async (req, res) => {
+    const { id } = req.params;
+    const { idDriver } = req.body;
+
+    try {
+        const ambilOrderan = await transaksiModel.findByIdAndUpdate(
+            id,
+            {
+                idDriver: idDriver
+            },
+            { new: true }
+        ).populate('idUser', 'namalengkap alamat telepon')  // Populate idUser to get user details
+        .populate('idPaket', 'namapaket harga')  // Populate idPaket to get paket details
+        .populate('idLayanan', 'layanan')  // Populate idLayanan to get layanan details
+        .populate('idPromo', 'promo keterangan potongan')
+        .populate('idDriver', 'namalengkap alamat telepon');  // Populate idPromo to get promo details
+
+        if (!ambilOrderan) {
+            return res.status(404).json({
+                status: 404,
+                msg: 'Orderan Tidak ditemukan',
+                data: null
+            });
+        }
+        res.status(200).json({
+            status: 200,
+            msg: 'Berhasil Mengambil Orderan',
+            data: ambilOrderan
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: 500,
+            msg: 'Gagal ambil orderan',
+            data: null,
+            error: error.message
+        });
+    }
+};
+
+
 exports.deleteTransaksi = async (req, res) => {
     const { id } = req.params;
 

@@ -26,6 +26,8 @@ router.put('/update/:id', transaksiController.updateTransaksi);
 
 router.delete('/delete/:id', transaksiController.deleteTransaksi);
 
+router.put('/ambilorderan/:id', transaksiController.ambilOrderan);
+
 // router.get('/getbyiduserlimit/:id', (req, res) => {
 
 //     transaksiController.getByIdUserLimit(req.params.id)

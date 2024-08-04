@@ -15,6 +15,7 @@ const transaksiSchema = new Schema({
         type: Date,
         default: new Date().toLocaleDateString(),  // format DD/MM/YYYY
     },
+    idDriver: { type: mongoose.Schema.Types.ObjectId, ref: 'user', default: null },
 });
 
 
