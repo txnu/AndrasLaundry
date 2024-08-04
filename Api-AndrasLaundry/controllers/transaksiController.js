@@ -27,7 +27,7 @@ exports.create = (req, res) => {
             });
         }
 
-        const { idUser, idPaket, idLayanan, idPromo, status } = req.body;
+        const { idUser, idPaket, idLayanan, idPromo, status, idDriver } = req.body;
         const buktiPembayaran = req.file ? req.file.filename : null;
 
         const newTransaksi = new transaksiModel({
@@ -37,6 +37,7 @@ exports.create = (req, res) => {
             idPromo,
             status,
             buktiPembayaran,
+            idDriver
         });
 
         newTransaksi.save()
@@ -132,7 +133,8 @@ exports.updateTransaksi = async (req, res) => {
         ).populate('idUser', 'namalengkap alamat telepon')  // Populate idUser to get user details
         .populate('idPaket', 'namapaket harga')  // Populate idPaket to get paket details
         .populate('idLayanan', 'layanan')  // Populate idLayanan to get layanan details
-        .populate('idPromo', 'promo keterangan potongan');  // Populate idPromo to get promo details
+        .populate('idPromo', 'promo keterangan potongan')
+        .populate('idDriver', 'namalengkap alamat telepon');  // Populate idPromo to get promo details
 
         if (!updatedTransaksi) {
             return res.status(404).json({
@@ -226,45 +228,3 @@ exports.deleteTransaksi = async (req, res) => {
     }
 };
 
-// exports.getByIdUserLimit = (id, limit) =>
-//     new Promise((resolve, reject) => {
-//         try {
-//             transaksiModel.aggregate([
-//                 {
-//                     $lookup: {
-//                         from: 'laundrys',
-//                         localField: 'idBarang',
-//                         foreignField: '_id',
-//                         as: 'dataBarang'
-//                     }
-//                 },
-//                 {
-//                     $unwind: '$dataBarang'
-//                 },
-//                 {
-//                     $match: {
-//                         idUser: objectId(id)
-//                     }
-//                 },
-//                 { $sort: { _id: -1 } },
-//                 {
-//                     $limit: 2,
-//                 },
-
-//             ]).then((data) => {
-//                 resolve({
-//                     sukses: true,
-//                     msg: 'Berhasil',
-//                     data: data
-//                 })
-//             }).catch((e) => {
-//                 reject({
-//                     sukses: false,
-//                     msg: 'Gagal',
-//                     data: []
-//                 })
-//             })
-//         } catch (error) {
-//             console.log(error)
-//         }
-//     })
