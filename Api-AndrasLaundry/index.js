@@ -30,6 +30,6 @@ app.use('/layanan', require('./routes/layanan'))
 app.use('/alamat', require('./routes/alamat'))
 app.use('/promo', require('./routes/promo'))
 
-app.listen(5001, () => {
+app.listen(5001, '0.0.0.0', () => {
     console.log('Berhasil Jalan')
 })
