@@ -92,12 +92,14 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              InkWell(
-                                onTap: () {},
-                                child: Icon(
-                                  Icons.sort,
-                                  color: Colors.white,
-                                  size: 40,
+                              Expanded(
+                                child: Text(
+                                  "Beranda",
+                                  style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 1),
                                 ),
                               ),
                               GestureDetector(
@@ -140,16 +142,8 @@ class _HomeUserScreensState extends State<HomeUserScreens> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "Beranda",
-                                style: TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500,
-                                    letterSpacing: 1),
-                              ),
                               SizedBox(
-                                height: 7,
+                                height: 40,
                               ),
                               Text(
                                 "Selamat Datang ${namalengkap}",

@@ -20,7 +20,7 @@ class _StatusWidgetState extends State {
 
   List<LatLng> polylineCoordinates = [];
   final String userId =
-      "66701b143d14c1a740e37b62"; // ID user yang akan difilter
+      "668a2ce79b5974e390090738"; // ID user yang akan difilter
   List<dynamic> transactions = [];
   bool isLoading = true;
 
@@ -54,8 +54,12 @@ class _StatusWidgetState extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pesanan anda'),
-        backgroundColor: Colors.green[700],
+        title: const Text(
+          'Pesanan anda',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.indigo,
+        shadowColor: Colors.white,
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
