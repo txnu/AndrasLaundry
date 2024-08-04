@@ -27,7 +27,7 @@ exports.create = (req, res) => {
             });
         }
 
-        const { idUser, idPaket, idLayanan, idPromo, status } = req.body;
+        const { idUser, idPaket, idLayanan, idPromo, status, idDriver } = req.body;
         const buktiPembayaran = req.file ? req.file.filename : null;
 
         const newTransaksi = new transaksiModel({
@@ -35,6 +35,7 @@ exports.create = (req, res) => {
             idPaket,
             idLayanan,
             idPromo,
+            idDriver,
             status,
             buktiPembayaran,
         });
