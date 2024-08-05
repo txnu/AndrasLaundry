@@ -64,7 +64,8 @@ exports.getAllTransaksi = async (req, res) => {
             .populate('idUser', 'namalengkap alamat telepon')  // Populate idUser to get user details
             .populate('idPaket', 'namapaket harga')  // Populate idPaket to get paket details
             .populate('idLayanan', 'layanan')  // Populate idLayanan to get layanan details
-            .populate('idPromo', 'promo keterangan potongan');  // Populate idPromo to get promo details
+            .populate('idPromo', 'promo keterangan potongan')
+            .populate('idDriver', 'namalengkap alamat telepon');  // Populate idPromo to get promo details
 
         res.status(200).json({
             status: 200,
