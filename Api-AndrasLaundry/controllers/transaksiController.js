@@ -131,7 +131,7 @@ exports.updateTransaksi = async (req, res) => {
         };
 
         // Check if status is 10, then set idDriver to null
-        if (status === 10) {
+        if (status == 10) {
             updateData.idDriver = null;
         }
         const updatedTransaksi = await transaksiModel.findByIdAndUpdate(
@@ -142,7 +142,7 @@ exports.updateTransaksi = async (req, res) => {
         .populate('idPaket', 'namapaket harga')  // Populate idPaket to get paket details
         .populate('idLayanan', 'layanan')  // Populate idLayanan to get layanan details
         .populate('idPromo', 'promo keterangan potongan')
-        .populate('idDriver', 'namalengkap alamat telepon');  // Populate idPromo to get promo details
+          // Populate idPromo to get promo details
 
         if (!updatedTransaksi) {
             return res.status(404).json({
