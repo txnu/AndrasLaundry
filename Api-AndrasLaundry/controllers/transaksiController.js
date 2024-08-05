@@ -123,13 +123,20 @@ exports.updateTransaksi = async (req, res) => {
     const { berat, detail, status } = req.body;
 
     try {
+        // Create the update object
+        let updateData = {
+            berat: berat,
+            detail: detail,
+            status: status
+        };
+
+        // Check if status is 10, then set idDriver to null
+        if (status === 10) {
+            updateData.idDriver = null;
+        }
         const updatedTransaksi = await transaksiModel.findByIdAndUpdate(
             id,
-            {
-                berat: berat,
-                detail: detail,
-                status: status
-            },
+            updateData,
             { new: true }
         ).populate('idUser', 'namalengkap alamat telepon')  // Populate idUser to get user details
         .populate('idPaket', 'namapaket harga')  // Populate idPaket to get paket details
